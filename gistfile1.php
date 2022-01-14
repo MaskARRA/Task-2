@@ -42,12 +42,12 @@ class ProductInformation
         $this->productRepository = $productRepository;
 
         $this->eventManager->dispatch(
-            'product_data_load',
-
-        //make a bracket here to load the product data and remove the $productSku and change to this
-        //['productID' => $productLoad]    
-
-            $productSku
+            //make a bracket here to load the product data and change this line          
+            // 'product_data_load' ,
+            // $productSku
+            
+            ['product_data_load' => $productSku]
+            
         );
     }
 
@@ -58,8 +58,8 @@ class ProductInformation
     public function getProductsData()
     {
         $productData = [];
-        //productSkus is undefined change productSkus to $productLoad because it cannot loads the data from product_data_load
-        foreach ($this->productSkus as $sku) {
+        //productSkus is undefined change productSkus to $productSku because it cannot loads the specified data from product_data_load
+        foreach ($this->$productSku as $sku) {
             $product = $this->productRepository->get($sku);
             $productData[$product->getId()] = [
                 'name' => $product->getName(),
