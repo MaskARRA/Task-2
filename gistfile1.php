@@ -24,7 +24,6 @@ class ProductInformation
      * @var array
      */
 
-    // Inside the bracket it links what poduct should be protected like ID etc.
     protected $productSku = [];
 
     /**
